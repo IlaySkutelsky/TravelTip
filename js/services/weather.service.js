@@ -6,7 +6,7 @@ let W_KEY = 'dcce2e8980961ef5d95b8b5594b059a9'
 
 
 function getWeather(loc) {
-    return fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${loc.latitude}&lon=${loc.longitude}&units=metric&APPID=${W_KEY}`)
+    return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${loc.latitude}&lon=${loc.longitude}&units=metric&APPID=${W_KEY}`)
 }
 
 // function initMap(lat = 32.0881183, lng = 34.803004) {
