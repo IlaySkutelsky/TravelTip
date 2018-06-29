@@ -93,5 +93,5 @@ function copyLoc() {
 }
 
 function setLocUrl(lat, lng) {
-    document.querySelector('.copy-loc-input').value = `/index.html?lat=${lat}&lng=${lng}`;
+    document.querySelector('.copy-loc-input').value = `https://ilayskutelsky.github.io/TravelTip/index.html?lat=${lat}&lng=${lng}`;
 }
