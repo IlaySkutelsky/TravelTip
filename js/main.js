@@ -72,7 +72,7 @@ function renderWeather(weatherData) {
     elWeather.innerHTML = `
     <h4>${weatherData.name}</h4>
     <div>
-    <img class="img-weather" src="http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png" </br>
+    <img class="img-weather" src="https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png" </br>
         <mark>${weatherData.weather[0].description}</mark></br>
     </div>
     <div>

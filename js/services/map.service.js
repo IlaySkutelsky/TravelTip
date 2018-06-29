@@ -2,6 +2,7 @@ const API_KEY = 'AIzaSyAls7l4BOIH_m37Pa-5xOcc8ddGZaKOmJQ';
 var map;
 
 function loadMap(lat = 32.0881183, lng = 34.803004) {
+    console.log(lat, lng);
     return _connectGoogleApi()
     .then(() => {
         map = new google.maps.Map(
