@@ -2,6 +2,7 @@ const API_KEY = 'AIzaSyAls7l4BOIH_m37Pa-5xOcc8ddGZaKOmJQ';
 var map;
 
 function loadMap(lat = 32.0881183, lng = 34.803004) {
+    console.log(lat, lng);
     return _connectGoogleApi()
     .then(() => {
         map = new google.maps.Map(
@@ -23,8 +24,7 @@ function searchByAdress(address) {
 }
 
 function addMarker(loc, title) {
-    let iconUrl = 'http://icons.iconarchive.com/icons/icons-land/vista-map-markers/32/Map-Marker-Push-Pin-1-Left-Pink-icon.png'
-    console.log(google);
+    let iconUrl = 'https://icons.iconarchive.com/icons/icons-land/vista-map-markers/32/Map-Marker-Push-Pin-1-Left-Pink-icon.png'
     var marker = new google.maps.Marker({
         position: loc,
         map: map,

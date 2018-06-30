@@ -1,6 +1,6 @@
 function getLocFromUrl(){
     let loc = {}
-    loc.lan = getParameterByName('lan')
+    loc.lat = getParameterByName('lat')
     loc.lng = getParameterByName('lng')
     return loc
 }

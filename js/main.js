@@ -6,7 +6,7 @@ import weatherService from './services/weather.service.js'
 
 window.onload = () => {
     let loc = utils.getLocFromUrl()
-    mapService.loadMap(loc.lan, loc.lng)
+    mapService.loadMap(loc.lat, loc.lng)
         .then(() => {
             document.querySelector('.search-btn').addEventListener('click', onSearch);
             document.querySelector('.search-input').addEventListener('keyup', checkEnter);
@@ -107,5 +107,5 @@ function copyLoc() {
 }
 
 function setLocUrl(lat, lng) {
-    document.querySelector('.copy-loc-input').value = `https://ilayskutelsky.github.io/TravelTip/index.html?lan=${lat}&lng=${lng}`;
+    document.querySelector('.copy-loc-input').value = `https://ilayskutelsky.github.io/TravelTip/index.html?lat=${lat}&lng=${lng}`;
 }
