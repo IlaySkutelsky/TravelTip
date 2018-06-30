@@ -10,6 +10,7 @@ window.onload = () => {
         .then(() => {
             document.querySelector('.search-btn').addEventListener('click', onSearch);
             document.querySelector('.search-input').addEventListener('keyup', checkEnter);
+            document.querySelector('.add-marker-btn').addEventListener('click', onAddMarker);
             document.querySelector('.my-loc-btn').addEventListener('click', loadMyLoc);
             document.querySelector('.copy-loc-btn').addEventListener('click', copyLoc);
         })
@@ -96,6 +97,12 @@ function renderWeather(weatherData) {
     <mark>Cloudiness:</mark> ${weatherData.clouds.all}% </br>
     `
     elWeather.classList.add('animated', 'fadeInLeft');
+}
+
+function onAddMarker() {
+    let center = mapService.getMapCenter()
+    let loc = { lat: center.lat(), lng: center.lng()}
+    mapService.addMarker(loc)
 }
 
 function copyLoc() {

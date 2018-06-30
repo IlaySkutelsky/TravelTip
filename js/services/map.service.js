@@ -50,9 +50,14 @@ function _connectGoogleApi() {
     })
 }
 
+function getMapCenter() {
+    return map.getCenter();
+}
+
 export default {
     loadMap,
     searchByAdress,
-    addMarker
+    addMarker,
+    getMapCenter
 }
 
