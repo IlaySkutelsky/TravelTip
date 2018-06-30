@@ -13,8 +13,6 @@ window.onload = () => {
             document.querySelector('.my-loc-btn').addEventListener('click', loadMyLoc);
             document.querySelector('.copy-loc-btn').addEventListener('click', copyLoc);
         })
-
-    loadMyLoc()
 }
 
 function checkEnter(ev) {
