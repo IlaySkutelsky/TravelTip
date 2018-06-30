@@ -27,8 +27,9 @@ function onSearch() {
     var searchInput = document.querySelector('.search-input').value;
     mapService.searchByAdress(searchInput)
         .then((res) => {
+            console.log(res);
             loc = res.results[0].geometry.location;
-            mapService.loadMap(loc.lat, loc.lng);
+            loadAndRenderMap(loc.lat, loc.lng)
         })
         .then(() => {
             loadAndRenderWeather({ latitude: loc.lat, longitude: loc.lng })
@@ -43,7 +44,7 @@ function loadMyLoc() {
     locService.getPosition()
         .then(res => {
             coords = res.coords;
-            mapService.loadMap(coords.latitude, coords.longitude)
+            loadAndRenderMap(coords.latitude, coords.longitude)
         })
         .then(() => {
             mapService.addMarker({ lat: coords.latitude, lng: coords.longitude }, 'Your\'e here!');
@@ -58,6 +59,8 @@ function loadMyLoc() {
 }
 
 function loadAndRenderWeather(loc) {
+    let elWeather = document.querySelector('.weather');
+    elWeather.classList.remove('animated', 'fadeInLeft');
     weatherService.getWeather(loc)
         .then((res) => {
             res.json()
@@ -67,23 +70,34 @@ function loadAndRenderWeather(loc) {
         })
 }
 
+function loadAndRenderMap(latitude, longitude) {
+    let elMap = document.querySelector('#map');
+    elMap.classList.remove('animated', 'fadeInLeft');
+    mapService.loadMap(latitude, longitude)
+    .then(() => {
+        elMap.classList.add('animated', 'fadeInLeft');
+    })
+}
+
 function renderWeather(weatherData) {
     let elWeather = document.querySelector('.weather');
+    // elWeather.classList.remove('animated', 'fadeInLeft');
     elWeather.innerHTML = `
     <h4>${weatherData.name}</h4>
     <div>
     <img class="img-weather" src="https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png" </br>
-        <mark>${weatherData.weather[0].description}</mark></br>
+    <mark>${weatherData.weather[0].description}</mark></br>
     </div>
     <div>
-        <mark>Temp:</mark> ${weatherData.main.temp}&#8451; </br>
+    <mark>Temp:</mark> ${weatherData.main.temp}&#8451; </br>
     </div>
     <div>
-        <mark>Humidity:</mark> ${weatherData.main.humidity}% </br>
+    <mark>Humidity:</mark> ${weatherData.main.humidity}% </br>
     </div>
     <div>
-        <mark>Cloudiness:</mark> ${weatherData.clouds.all}% </br>
+    <mark>Cloudiness:</mark> ${weatherData.clouds.all}% </br>
     `
+    elWeather.classList.add('animated', 'fadeInLeft');
 }
 
 function copyLoc() {
